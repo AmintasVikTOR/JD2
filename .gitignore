@@ -1,6 +1,16 @@
 .idea
 *.iml
 out
+*.class
 
 *.jar
 *.war
+*.ear
+
+.target
+
+# IntelliJ
+/out/
+
+# mpeltonen/sbt-idea plugin
+.idea_modules/
