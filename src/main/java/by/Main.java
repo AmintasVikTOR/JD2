@@ -1,4 +1,4 @@
-package by.amintas;
+package by;
 
 public class Main {
     public static void main(String[] args) {
