@@ -1,7 +1,7 @@
 package by.domain;
 
+import java.sql.Date;
 import java.sql.Timestamp;
-import java.util.Date;
 import java.util.Objects;
 
 public class User {
@@ -24,6 +24,8 @@ public class User {
     private boolean isBlocked;
 
     private Float weight;
+
+    private Role role;
 
     public User() {
     }
@@ -108,6 +110,14 @@ public class User {
         this.weight = weight;
     }
 
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -122,12 +132,13 @@ public class User {
                 Objects.equals(password, user.password) &&
                 Objects.equals(created, user.created) &&
                 Objects.equals(changed, user.changed) &&
-                Objects.equals(weight, user.weight);
+                Objects.equals(weight, user.weight) &&
+                Objects.equals(role, user.role);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, username, surname, birthDate, login, password, created, changed, isBlocked, weight);
+        return Objects.hash(id, username, surname, birthDate, login, password, created, changed, isBlocked, weight, role);
     }
 
     @Override
@@ -141,8 +152,9 @@ public class User {
                 ", password='" + password + '\'' +
                 ", created=" + created +
                 ", changed=" + changed +
-                ", is_blocked=" + isBlocked +
+                ", isBlocked=" + isBlocked +
                 ", weight=" + weight +
+                ", role=" + role +
                 '}';
     }
 }

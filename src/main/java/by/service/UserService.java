@@ -1,16 +1,11 @@
-package by.dao;
+package by.service;
 
 import by.domain.User;
 
 import java.util.List;
 import java.util.Optional;
 
-public interface UserDao {
-    /*CRUD operations*/
-    /*Create = Insert*/
-    /*Read = select*/
-    /*Update*/
-    /*Delete*/
+public interface UserService {
     List<User> findAll();
 
     List<User> search(String searchParam);
@@ -24,7 +19,4 @@ public interface UserDao {
     User update(User user);
 
     int delete(User user);
-
-    //use batch for saving collection of users
-
 }
