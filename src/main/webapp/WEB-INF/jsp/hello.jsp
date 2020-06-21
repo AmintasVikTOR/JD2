@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <title>HELLO</title>
 
-    <link type="text/css" rel="stylesheet" href="style1.css">
+    <link type="text/css" rel="stylesheet" href="../../resources/css/style1.css">
 
 
 </head>

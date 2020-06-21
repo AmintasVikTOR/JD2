@@ -4,6 +4,6 @@
     <title>Bye bye!</title>
 </head>
 <body>
-${userNames}
+${dealerNames}
 </body>
 </html>
