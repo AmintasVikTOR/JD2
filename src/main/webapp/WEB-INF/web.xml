@@ -47,6 +47,11 @@
         <jsp-file>/WEB-INF/jsp/bye.jsp</jsp-file>
     </servlet>
 
+    <servlet>
+        <servlet-name>Errors</servlet-name>
+        <jsp-file>/WEB-INF/jsp/error.jsp</jsp-file>
+    </servlet>
+
     <servlet-mapping>
         <servlet-name>HelloWeb</servlet-name>
         <url-pattern>/hello</url-pattern>
@@ -56,5 +61,11 @@
         <servlet-name>ByeByeWeb</servlet-name>
         <url-pattern>/bye</url-pattern>
     </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>Errors</servlet-name>
+        <url-pattern>/error</url-pattern>
+    </servlet-mapping>
+
 
 </web-app>
