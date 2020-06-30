@@ -4,14 +4,16 @@ import by.dao.DealerDao;
 import by.domain.Dealer;
 import by.exceptions.ResourceNotFoundException;
 import by.util.DatabaseConfiguration;
+import org.springframework.stereotype.Repository;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import static by.util.DatabaseConfiguration.*;
 
-
+@Repository("dealerRepositoryJdbcTemplate")
 public class DealerDaoImpl implements DealerDao {
     public static DatabaseConfiguration config = DatabaseConfiguration.getInstance();
 
@@ -94,53 +96,10 @@ public class DealerDaoImpl implements DealerDao {
         return resultList;
     }
 
-    @Override
-    public Dealer findById(Long dealerId) {
-        final String findById = "select * from m_auto_dealer where id = ?";
-
-        String driverName = config.getProperty(DATABASE_DRIVER_NAME);
-        String url = config.getProperty(DATABASE_URL);
-        String login = config.getProperty(DATABASE_LOGIN);
-        String databasePassword = config.getProperty(DATABASE_PASSWORD);
-
-        /*1. Load driver*/
-        try {
-            Class.forName(driverName);
-        } catch (ClassNotFoundException e) {
-            System.out.println("Don't worry:)");
-        }
-
-        Dealer dealer = null;
-        ResultSet resultSet = null;
-        /*2. DriverManager should get connection*/
-        try (Connection connection = DriverManager.getConnection(url, login, databasePassword);
-                /*3. Get statement from connection*/
-             PreparedStatement preparedStatement = connection.prepareStatement(findById);
-        ) {
-
-            preparedStatement.setLong(1, dealerId);
-            /*4. Execute query*/
-            resultSet = preparedStatement.executeQuery();
-
-            if (resultSet.next()) {
-                /*6. Add parsed info into collection*/
-                dealer = parseResultSet(resultSet);
-            } else {
-                throw new ResourceNotFoundException("Dealer with id " + dealerId + " not found");
-            }
-
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        } finally {
-            try {
-                resultSet.close();
-            } catch (SQLException throwables) {
-                System.out.println(throwables.getMessage());
-            }
-        }
-
-        return dealer;
+    public Optional<Dealer> findById(Long dealerId) {
+        return Optional.ofNullable(findOne(dealerId));
     }
+
 
     @Override
     public Dealer findOne(Long dealerId) {

@@ -3,13 +3,14 @@ package by.dao;
 import by.domain.Dealer;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface DealerDao {
     List<Dealer> findAll();
 
     List<Dealer> search(String searchParam);
 
-    Dealer findById(Long dealerId);
+    Optional<Dealer> findById(Long dealerId);
 
     Dealer findOne(Long dealerId);
 

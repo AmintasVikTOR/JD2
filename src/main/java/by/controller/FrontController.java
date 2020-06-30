@@ -67,7 +67,7 @@ public class FrontController extends HttpServlet {
                         //resultUsers = userDao.findById(Long.parseLong(searchQuery)).orElseThrow(ResourceNotFoundException::new).getLogin();
 
                         Optional<User> optionalUser = userDao.findById(Long.parseLong(searchQuery));
-                        Optional<Dealer> optionalDealer = Optional.ofNullable(dealerDao.findById(Long.parseLong(searchQueryDealer)));
+                        Optional<Dealer> optionalDealer = dealerDao.findById(Long.parseLong(searchQueryDealer));
 
                         if (optionalUser.isPresent()) {
                             resultUsers = optionalUser.get().getLogin();

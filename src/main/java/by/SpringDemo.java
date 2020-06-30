@@ -1,6 +1,12 @@
 package by;
 
+import by.dao.DealerDao;
+import by.dao.UserDao;
+import by.domain.Dealer;
+import by.domain.User;
 import org.apache.log4j.Logger;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class SpringDemo {
     /*3. Create logger object*/
@@ -15,8 +21,10 @@ public class SpringDemo {
         //5. For test purpose only: use ClassPathXmlApplicationContext or AnnotationConfigApplicationContext
         //   for Spring Context calling and getting bean
 
+
         //ApplicationContext context = new ClassPathXmlApplicationContext("classpath:application-context.xml");
-//        ApplicationContext context = new AnnotationConfigApplicationContext("by");
+        ApplicationContext context = new AnnotationConfigApplicationContext("by");
+        ApplicationContext context2 = new AnnotationConfigApplicationContext("by");
 //        User user = (User) context.getBean("user");
 //        TestSpring testSpring = (TestSpring) context.getBean("testSpring");
 //        HttpClient httpClient = (HttpClient) context.getBean("httpClient");
@@ -51,11 +59,16 @@ public class SpringDemo {
 //            log.info(user.getLogin());
 //        }
 
-//        UserService userService = (UserService) context.getBean("userService");
-//        for (User user : userService.findAll()) {
-//            //System.out.println(user);
-//            log.info(user.getLogin());
-//        }
+        UserDao userRepositoryJdbcTemplate = (UserDao) context.getBean("userRepositoryJdbcTemplate");
+        for (User user : userRepositoryJdbcTemplate.findAll()) {
+            System.out.println(user);
+        }
+
+        //added dealer
+        DealerDao dealerDaoRepositoryJdbcTemplate = (DealerDao) context2.getBean("dealerRepositoryJdbcTemplate");
+        for (Dealer dealer : dealerDaoRepositoryJdbcTemplate.findAll()) {
+            System.out.println(dealer);
+        }
 
     }
 }

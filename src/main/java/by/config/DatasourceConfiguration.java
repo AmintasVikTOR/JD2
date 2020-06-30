@@ -11,6 +11,8 @@ import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 
 import javax.sql.DataSource;
 
+//for JdbcTemplate
+
 @Configuration
 @PropertySource("classpath:database.properties")
 public class DatasourceConfiguration {

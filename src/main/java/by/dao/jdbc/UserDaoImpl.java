@@ -4,7 +4,9 @@ import by.dao.UserDao;
 import by.domain.User;
 import by.exceptions.ResourceNotFoundException;
 import by.util.DatabaseConfiguration;
+import org.springframework.stereotype.Repository;
 
+import javax.sql.DataSource;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +14,7 @@ import java.util.Optional;
 
 import static by.util.DatabaseConfiguration.*;
 
-//@Repository("userRepositoryJdbc")
+@Repository("userRepositoryJdbc")
 public class UserDaoImpl implements UserDao {
     public static DatabaseConfiguration config = DatabaseConfiguration.getInstance();
 
@@ -26,6 +28,16 @@ public class UserDaoImpl implements UserDao {
     public static final String USER_CHANGED = "changed";
     public static final String USER_IS_BLOCKED = "is_blocked";
     public static final String USER_WEIGHT = "weight";
+
+    private DataSource dataSource;
+
+    public UserDaoImpl(DataSource dataSource) {
+        this.dataSource = dataSource;
+    }
+
+    public UserDaoImpl() {
+
+    }
 
     @Override
     public List<User> findAll() {
