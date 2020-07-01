@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.context.annotation.Import;
 
+//In realease AOP
 @Configuration
 @ComponentScan("by")
 //@EnableLoadTimeWeaving

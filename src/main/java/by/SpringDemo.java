@@ -1,9 +1,9 @@
 package by;
 
-import by.dao.DealerDao;
-import by.dao.UserDao;
 import by.domain.Dealer;
 import by.domain.User;
+import by.service.DealerService;
+import by.service.UserService;
 import org.apache.log4j.Logger;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -59,15 +59,25 @@ public class SpringDemo {
 //            log.info(user.getLogin());
 //        }
 
-        UserDao userRepositoryJdbcTemplate = (UserDao) context.getBean("userRepositoryJdbcTemplate");
-        for (User user : userRepositoryJdbcTemplate.findAll()) {
-            System.out.println(user);
+//        UserDao userRepositoryJdbcTemplate = (UserDao) context.getBean("userRepositoryJdbcTemplate");
+//        for (User user : userRepositoryJdbcTemplate.findAll()) {
+//            System.out.println(user);
+//        }
+        UserService userService = (UserService) context.getBean("userService");
+        for (User user : userService.findAll()) {
+            //System.out.println(user);
+            log.info(user.getLogin());
         }
-
-        //added dealer
-        DealerDao dealerDaoRepositoryJdbcTemplate = (DealerDao) context2.getBean("dealerRepositoryJdbcTemplate");
-        for (Dealer dealer : dealerDaoRepositoryJdbcTemplate.findAll()) {
-            System.out.println(dealer);
+//
+//        //added dealer
+//        DealerDao dealerDaoRepositoryJdbcTemplate = (DealerDao) context2.getBean("dealerRepositoryJdbcTemplate");
+//        for (Dealer dealer : dealerDaoRepositoryJdbcTemplate.findAll()) {
+//            System.out.println(dealer);
+//        }
+        DealerService dealerService = (DealerService) context2.getBean("dealerService");
+        for (Dealer dealer : dealerService.findAll()) {
+            //System.out.println(user);
+            log.info(dealer.getName());
         }
 
     }

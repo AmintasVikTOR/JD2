@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.Optional;
 
 public interface UserService {
+
+    //In realease AOP
     List<User> findAll();
 
     List<User> search(String searchParam);

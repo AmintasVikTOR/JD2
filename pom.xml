@@ -99,6 +99,7 @@
             <version>${spring.version}</version>
         </dependency>
 
+        <!--AOP: spring-aop; aspectjrt; aspectjweaver  -->
         <dependency>
             <groupId>org.aspectj</groupId>
             <artifactId>aspectjrt</artifactId>
