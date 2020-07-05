@@ -66,12 +66,20 @@ public class SpringDemo {
 //        for (User user : userRepositoryJdbcTemplate.findAll()) {
 //            System.out.println(user);
 //        }
+
+//        UserService userService = (UserService) context.getBean("userService");
+//        for (User user : userService.findAll()) {
+//            //System.out.println(user);
+//            // log4j
+//            log.info(user.getLogin());
+//        }
         UserService userService = (UserService) context.getBean("userService");
         for (User user : userService.findAll()) {
             //System.out.println(user);
-            // log4j
             log.info(user.getLogin());
         }
+
+
 //
 //        //added dealer
 //        DealerDao dealerDaoRepositoryJdbcTemplate = (DealerDao) context2.getBean("dealerRepositoryJdbcTemplate");
