@@ -8,8 +8,11 @@ import org.apache.log4j.Logger;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
+// log4j
+
 public class SpringDemo {
     /*3. Create logger object*/
+    // log4j
     private static final Logger log = Logger.getLogger(by.SpringDemo.class);
 
     public static void main(String[] args) {
@@ -66,6 +69,7 @@ public class SpringDemo {
         UserService userService = (UserService) context.getBean("userService");
         for (User user : userService.findAll()) {
             //System.out.println(user);
+            // log4j
             log.info(user.getLogin());
         }
 //
@@ -77,6 +81,7 @@ public class SpringDemo {
         DealerService dealerService = (DealerService) context2.getBean("dealerService");
         for (Dealer dealer : dealerService.findAll()) {
             //System.out.println(user);
+            // log4j
             log.info(dealer.getName());
         }
 

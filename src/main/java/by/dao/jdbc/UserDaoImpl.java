@@ -19,6 +19,7 @@ import static by.util.DatabaseConfiguration.*;
 public class UserDaoImpl implements UserDao {
     public static DatabaseConfiguration config = DatabaseConfiguration.getInstance();
 
+    // log4j
     private static final Logger log = Logger.getLogger(UserDaoImpl.class);
 
     public static final String USER_ID = "id";
@@ -64,17 +65,22 @@ public class UserDaoImpl implements UserDao {
                 /*3. Get statement from connection*/
              PreparedStatement preparedStatement = connection.prepareStatement(findAllQuery)) {
 
+            // log4j
             log.debug("Getting connection");
             log.debug("Prepared statement creation");
 
             /*4. Execute query*/
             ResultSet resultSet = preparedStatement.executeQuery();
+            log.debug("Executing query");
             while (resultSet.next()) {
+                log.debug("Parsing result set");
                 /*6. Add parsed info into collection*/
                 resultList.add(parseResultSet(resultSet));
             }
+            log.debug("Successfully parsed result set");
         } catch (SQLException e) {
             System.out.println(e.getMessage());
+            log.error("Find all method error!", e);
         }
 
         return resultList;
